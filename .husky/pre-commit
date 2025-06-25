@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+#!/usr/bin/env bash
+LC_ALL=C
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+yarn lint-staged

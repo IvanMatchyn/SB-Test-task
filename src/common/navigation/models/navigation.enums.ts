@@ -1,4 +1,4 @@
 export enum Screens {
-  Dashboard = 'Dashboard',
-  AccountDetails = 'AccountDetails'
+  AccountList = 'AccountList',
+  AccountDetails = 'AccountDetails',
 }

@@ -1,7 +1,8 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import { testingSlice } from './slices/dashboard.slice.ts';
-
-export const rootReducer = combineReducers({
-  [testingSlice.name]: testingSlice.reducer,
-});
-
+// import { combineReducers } from '@reduxjs/toolkit';
+// import { ExerciseSlice } from './slices/dashboard.slice.ts';
+//
+//
+// export const rootReducer = combineReducers({
+//   [ExerciseSlice.name]: ExerciseSlice.reducer,
+// });
+//

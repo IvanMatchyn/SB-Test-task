@@ -1,6 +1,10 @@
-import { Screens } from './navigation.enums.ts';
+import { Account } from '../../models/types/mockData.types.ts';
 
-export interface IRootStackParamList {
-  [Screens.Dashboard]: undefined;
-  [Screens.AccountDetails]: undefined;
-}
+import { Screens } from './navigation.enums';
+
+export type TRootStackParamList = {
+  [Screens.AccountList]: undefined;
+  [Screens.AccountDetails]: {
+    account: Account;
+  };
+};

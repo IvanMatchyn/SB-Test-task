@@ -1,18 +1,49 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IinitialTestingState } from '../models/store.types.ts';
-
-export const initialTestingState: IinitialTestingState = {
-  phoneNumber: '966556963909',
-};
-
-export const testingSlice = createSlice({
-  name: 'testing',
-  initialState: initialTestingState,
-  reducers: {
-    setTestingUserId: (state, action: PayloadAction<string>) => {
-      state.phoneNumber = action.payload;
-    },
-  },
-});
-
-export const { setTestingUserId } = testingSlice.actions;
+// import {createSlice} from '@reduxjs/toolkit';
+//
+// import { ExerciseResponse } from '../models/store.types';
+//
+// export interface ExerciseInitialStateType {
+//   data: ExerciseResponse[];
+//   loading: boolean;
+// }
+//
+// const initialExerciseState: ExerciseInitialStateType = {
+//   data: [],
+//   loading: false,
+// };
+//
+// export const ExerciseSlice = createSlice({
+//   name: 'exerciseList',
+//   initialState: initialExerciseState,
+//   reducers: {
+//     clear: () => {
+//       return {
+//         ...initialExerciseState,
+//       };
+//     },
+//   },
+//   // extraReducers: builder => {
+//   //   builder
+//   //     .addCase(getExerciseList.fulfilled, (state, action) => {
+//   //       return {
+//   //         data: action.payload as ExerciseResponse[],
+//   //         loading: false,
+//   //       };
+//   //     })
+//   //     .addCase(getExerciseList.pending, () => {
+//   //       return {
+//   //         data: [],
+//   //         loading: true,
+//   //       };
+//   //     })
+//   //     .addCase(getExerciseList.rejected, () => {
+//   //       return {
+//   //         data: [],
+//   //         loading: false,
+//   //       };
+//   //     });
+//   // },
+// });
+//
+// export const ExerciseListActions = ExerciseSlice.actions;
+// export const ExerciseListReducers = ExerciseSlice.reducer;

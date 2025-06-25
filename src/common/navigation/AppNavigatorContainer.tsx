@@ -1,22 +1,33 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { IRootStackParamList } from './models/navigation.types.ts';
-import React from 'react';
-import { View , Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'react-native';
 
-const RootStack = createNativeStackNavigator<IRootStackParamList>();
+import { AccountDetailScreen } from '../../modules/dashboard.module/screens/accountDetailsScreen';
+import { AccountListScreen } from '../../modules/dashboard.module/screens/accountListScreen';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+import { Screens } from './models/navigation.enums.ts';
+import { TRootStackParamList } from './models/navigation.types.ts';
+
+const RootStack = createNativeStackNavigator<TRootStackParamList>();
 
 export const AppNavigatorContainer = () => {
   return (
-      <RootStack.Navigator>
-
+    <NavigationContainer>
+      <StatusBar backgroundColor="transparent" barStyle="default" translucent />
+      <RootStack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+        initialRouteName={Screens.AccountList}>
+        <RootStack.Screen
+          name={Screens.AccountList}
+          component={AccountListScreen}
+        />
+        <RootStack.Screen
+          name={Screens.AccountDetails}
+          component={AccountDetailScreen}
+        />
       </RootStack.Navigator>
-  )
-}
+    </NavigationContainer>
+  );
+};

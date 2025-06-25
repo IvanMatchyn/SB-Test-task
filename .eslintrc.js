@@ -1,21 +1,33 @@
 module.exports = {
   root: true,
+  env: {
+    node: true,
+  },
   parser: '@typescript-eslint/parser',
-  extends: [
-    '@react-native-community',
-    'plugin:import/typescript',
+  plugins: [
+    'import',
+    'react-hooks',
+    'unused-imports',
+    '@typescript-eslint',
+    'prettier',
   ],
-  plugins: ['sonarjs', 'import', 'react-hooks', 'unused-imports', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:import/typescript',
+    'plugin:prettier/recommended',
+  ],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
-      //   files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
       parserOptions: {
         project: ['./tsconfig.json'],
+        tsconfigRootDir: __dirname,
+        ecmaVersion: 'latest',
+        sourceType: 'module',
       },
       rules: {
         '@typescript-eslint/no-unsafe-call': 'warn',
@@ -25,9 +37,7 @@ module.exports = {
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-misused-promises': [
           'error',
-          {
-            checksVoidReturn: false,
-          },
+          { checksVoidReturn: false },
         ],
       },
     },
@@ -40,16 +50,15 @@ module.exports = {
   ],
   rules: {
     'no-console': 'error',
-    'react-native/no-single-element-style-arrays': 'error',
-    'react-native/no-inline-styles': 'error',
-    'react-native/no-color-literals': 'error',
     'react/react-in-jsx-scope': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'react/prop-types': ['error', { skipUndeclared: true }],
     'id-length': [
-      2,
-      { exceptions: ['x', 'y', '_', 'a', 'b'], properties: 'never' },
+      'error',
+      {
+        exceptions: ['x', 'y', '_', 'a', 'b'],
+        properties: 'never',
+      },
     ],
     'import/order': [
       'error',
@@ -70,7 +79,6 @@ module.exports = {
             position: 'after',
           },
         ],
-        distinctGroup: false,
         alphabetize: {
           order: 'asc',
           caseInsensitive: true,
@@ -79,13 +87,7 @@ module.exports = {
       },
     ],
     'import/no-duplicates': ['error', { 'prefer-inline': true }],
-    'import/no-cycle': [
-      'error',
-      {
-        maxDepth: 10,
-        ignoreExternal: true,
-      },
-    ],
+    'import/no-cycle': ['error', { maxDepth: 10, ignoreExternal: true }],
     'import/no-self-import': 'error',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
@@ -97,5 +99,6 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
+    'prettier/prettier': 'error',
   },
 };
