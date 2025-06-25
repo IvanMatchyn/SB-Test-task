@@ -18,10 +18,15 @@ export const useAccountListScreen = () => {
     [navigation],
   );
 
+  const navigateToChatBot = useCallback(() => {
+    navigation.navigate(Screens.ChatBot);
+  }, [navigation]);
+
   const keyExtractor = (item: Account) => item.id;
 
   return {
     navigateToDetails,
+    navigateToChatBot,
     keyExtractor,
   };
 };

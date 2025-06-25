@@ -4,18 +4,8 @@ module.exports = {
     node: true,
   },
   parser: '@typescript-eslint/parser',
-  plugins: [
-    'import',
-    'react-hooks',
-    'unused-imports',
-    '@typescript-eslint',
-    'prettier',
-  ],
-  extends: [
-    'eslint:recommended',
-    'plugin:import/typescript',
-    'plugin:prettier/recommended',
-  ],
+  plugins: ['import', 'react-hooks', 'unused-imports', '@typescript-eslint', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:import/typescript', 'plugin:prettier/recommended'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -35,10 +25,7 @@ module.exports = {
         '@typescript-eslint/no-namespace': 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
-        '@typescript-eslint/no-misused-promises': [
-          'error',
-          { checksVoidReturn: false },
-        ],
+        '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
       },
     },
     {
@@ -49,7 +36,7 @@ module.exports = {
     },
   ],
   rules: {
-    'no-console': 'error',
+    'no-console': 'warn',
     'react/react-in-jsx-scope': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -63,14 +50,7 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: [
-          ['builtin', 'external'],
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-        ],
+        groups: [['builtin', 'external'], 'internal', 'parent', 'sibling', 'index', 'object'],
         'newlines-between': 'always',
         pathGroups: [
           {

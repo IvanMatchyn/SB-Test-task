@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   FlatList,
   ListRenderItem,
   SafeAreaView,
@@ -15,7 +16,8 @@ import { Account } from '../../../../common/models/types/mockData.types.ts';
 import { useAccountListScreen } from './useAccountListScreen.ts';
 
 export const AccountListScreen = () => {
-  const { navigateToDetails, keyExtractor } = useAccountListScreen();
+  const { navigateToDetails, keyExtractor, navigateToChatBot } =
+    useAccountListScreen();
 
   const renderListItem: ListRenderItem<Account> = ({ item }) => {
     return (
@@ -38,6 +40,7 @@ export const AccountListScreen = () => {
           keyExtractor={keyExtractor}
           renderItem={renderListItem}
         />
+        <Button title={'To Chat bot'} onPress={navigateToChatBot} />
       </View>
     </SafeAreaView>
   );

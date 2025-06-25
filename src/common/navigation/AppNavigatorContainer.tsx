@@ -2,6 +2,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
 
+import { PinCodeScreen } from '../../modules/auth.module/screens/pinCodeScreen';
+import { ChatBotScreen } from '../../modules/chatbot.module/screens/chatBotScreen';
 import { AccountDetailScreen } from '../../modules/dashboard.module/screens/accountDetailsScreen';
 import { AccountListScreen } from '../../modules/dashboard.module/screens/accountListScreen';
 
@@ -18,14 +20,14 @@ export const AppNavigatorContainer = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={Screens.AccountList}>
+        initialRouteName={Screens.PinCode}>
+        <RootStack.Screen name={Screens.AccountList} component={AccountListScreen} />
+        <RootStack.Screen name={Screens.AccountDetails} component={AccountDetailScreen} />
+        <RootStack.Screen name={Screens.PinCode} component={PinCodeScreen} />
         <RootStack.Screen
-          name={Screens.AccountList}
-          component={AccountListScreen}
-        />
-        <RootStack.Screen
-          name={Screens.AccountDetails}
-          component={AccountDetailScreen}
+          options={{ title: 'AI Assistant', headerShown: true }}
+          name={Screens.ChatBot}
+          component={ChatBotScreen}
         />
       </RootStack.Navigator>
     </NavigationContainer>
