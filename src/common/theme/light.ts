@@ -4,6 +4,7 @@ export const lightTheme: AppTheme = {
   colors: {
     backgroundPrimary: '#5856D6',
     backgroundSecondary: '#3D3C60',
+    bg3: '#e0e0e0',
     surface: '#F0F0FA',
     primary: '#1C1B33',
     secondary: '#A29BFE',

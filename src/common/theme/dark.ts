@@ -2,10 +2,11 @@ import { AppTheme } from '../models/interfaces/theme.interfaces.ts';
 
 export const darkTheme: AppTheme = {
   colors: {
-    backgroundPrimary: '#1C1B33', // start of gradient
-    backgroundSecondary: '#3D3C60', // start of gradient
-    surface: '#2E2D52', // end of gradient
-    primary: '#3D3C60', // your custom dark accent
+    backgroundPrimary: '#1C1B33',
+    backgroundSecondary: '#3D3C60',
+    bg3: '#1C1B33',
+    surface: '#2E2D52',
+    primary: '#3D3C60',
     secondary: '#5E5CE6',
     textPrimary: '#FFFFFF',
     textSecondary: '#FFFFFF',

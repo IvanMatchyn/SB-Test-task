@@ -1,56 +1,18 @@
-import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, Vibration, View } from 'react-native';
-import ReactNativeBiometrics from 'react-native-biometrics';
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { Icon } from '../../../../common/components/Icon.tsx';
 import { IconsCatalog } from '../../../../common/models/enums/icons.enums.ts';
-import { Screens } from '../../../../common/navigation/models/navigation.enums.ts';
 import { MMKVStorage } from '../../../../common/storage/storage.ts';
 import { PIN_CODE_ARRAY_MASK, PIN_KEY, PIN_LENGTH } from '../../constants';
 
+import { usePinCodeScreen } from './usePinCodeScreen.ts';
+
 /* Mock implementation*/
 MMKVStorage.storeDataStorage(PIN_KEY, '12345', true);
-const rnBiometrics = new ReactNativeBiometrics();
 
 export const PinCodeScreen = () => {
-  const [pin, setPin] = useState('');
-  const [error, setError] = useState(false);
-  const [biometricTried, setBiometricTried] = useState(false);
-
-  const navigation = useNavigation<NavigationProp<ParamListBase>>();
-
-  const correctPin = MMKVStorage.getStorageStringData(PIN_KEY, true); // fallback default
-
-  const handlePress = (value: string) => {
-    if (pin.length < PIN_LENGTH) {
-      const newPin = pin + value;
-      setPin(newPin);
-
-      if (newPin.length === PIN_LENGTH) {
-        setTimeout(() => validatePin(newPin), 100);
-      }
-    }
-  };
-
-  const validatePin = (enteredPin: string) => {
-    if (enteredPin === correctPin) {
-      navigation.navigate(Screens.AccountList); // your home screen name
-    } else {
-      Vibration.vibrate(200);
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-        setPin('');
-      }, 1000);
-    }
-  };
-
-  const handleBackspace = () => {
-    if (pin.length > 0) {
-      setPin(prev => prev.slice(0, -1));
-    }
-  };
+  const { handlePress, handleBackspace, error, tryBiometricAuth, pin } = usePinCodeScreen();
 
   const renderDot = (index: number) => {
     const isFilled = index < pin.length;
@@ -61,28 +23,6 @@ export const PinCodeScreen = () => {
       />
     );
   };
-
-  const tryBiometricAuth = async () => {
-    setBiometricTried(true);
-
-    const { available } = await rnBiometrics.isSensorAvailable();
-    if (!available) return;
-
-    const { success } = await rnBiometrics.simplePrompt({
-      promptMessage: 'Authenticate with biometrics',
-    });
-
-    if (success && correctPin) {
-      setPin(correctPin);
-      validatePin(correctPin);
-    }
-  };
-
-  useEffect(() => {
-    if (!biometricTried) {
-      tryBiometricAuth();
-    }
-  }, []);
 
   return (
     <SafeAreaView style={styles.container}>

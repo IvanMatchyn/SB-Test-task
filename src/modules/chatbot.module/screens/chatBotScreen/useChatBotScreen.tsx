@@ -1,3 +1,4 @@
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
@@ -8,6 +9,8 @@ import { NetworkService } from '../../../../config/network';
 export const useChatBotScreen = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
 
   useEffect(() => {
     setMessages([
@@ -61,7 +64,14 @@ export const useChatBotScreen = () => {
     }
   }, []);
 
+  const navigateBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  };
+
   return {
+    navigateBack,
     isTyping,
     onSend,
     messages,

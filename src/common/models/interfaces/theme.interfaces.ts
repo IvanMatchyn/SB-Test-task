@@ -2,6 +2,7 @@ export interface AppTheme {
   colors: {
     backgroundPrimary: string;
     backgroundSecondary: string;
+    bg3: string;
     surface: string;
     primary: string;
     secondary: string;

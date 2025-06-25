@@ -20,18 +20,14 @@ export const AppNavigatorContainer = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={Screens.AccountList}>
+        initialRouteName={Screens.PinCode}>
         <RootStack.Screen name={Screens.AccountList} component={AccountListScreen} />
         <RootStack.Screen
           name={Screens.AccountTransactions}
           component={AccountTransactionsScreen}
         />
         <RootStack.Screen name={Screens.PinCode} component={PinCodeScreen} />
-        <RootStack.Screen
-          options={{ title: 'AI Assistant', headerShown: true }}
-          name={Screens.ChatBot}
-          component={ChatBotScreen}
-        />
+        <RootStack.Screen name={Screens.ChatBot} component={ChatBotScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
