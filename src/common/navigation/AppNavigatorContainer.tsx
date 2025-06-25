@@ -4,8 +4,8 @@ import { StatusBar } from 'react-native';
 
 import { PinCodeScreen } from '../../modules/auth.module/screens/pinCodeScreen';
 import { ChatBotScreen } from '../../modules/chatbot.module/screens/chatBotScreen';
-import { AccountDetailScreen } from '../../modules/dashboard.module/screens/accountDetailsScreen';
 import { AccountListScreen } from '../../modules/dashboard.module/screens/accountListScreen';
+import { AccountTransactionsScreen } from '../../modules/dashboard.module/screens/accountTransactionsScreen';
 
 import { Screens } from './models/navigation.enums.ts';
 import { TRootStackParamList } from './models/navigation.types.ts';
@@ -20,9 +20,12 @@ export const AppNavigatorContainer = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={Screens.PinCode}>
+        initialRouteName={Screens.AccountList}>
         <RootStack.Screen name={Screens.AccountList} component={AccountListScreen} />
-        <RootStack.Screen name={Screens.AccountDetails} component={AccountDetailScreen} />
+        <RootStack.Screen
+          name={Screens.AccountTransactions}
+          component={AccountTransactionsScreen}
+        />
         <RootStack.Screen name={Screens.PinCode} component={PinCodeScreen} />
         <RootStack.Screen
           options={{ title: 'AI Assistant', headerShown: true }}

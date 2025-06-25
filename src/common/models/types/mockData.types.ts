@@ -1,3 +1,5 @@
+import { IconsCatalog } from '../enums/icons.enums.ts';
+
 export type Account = {
   id: string;
   name: string;
@@ -8,8 +10,10 @@ export type Account = {
 export type Transaction = {
   id: string;
   description: string;
+  source: string;
   date: string;
   amount: number;
+  icon: IconsCatalog;
 };
 
 export type TransactionMap = {

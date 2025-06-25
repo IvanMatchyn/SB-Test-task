@@ -1,6 +1,6 @@
 export enum Screens {
   AccountList = 'AccountList',
-  AccountDetails = 'AccountDetails',
+  AccountTransactions = 'AccountTransactions',
   ChatBot = 'ChatBot',
   PinCode = 'PinCode',
 }
