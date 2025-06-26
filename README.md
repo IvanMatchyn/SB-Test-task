@@ -3,6 +3,7 @@
 This is a **React Native** project bootstrapped with the [React Native CLI](https://github.com/react-native-community/cli).
 It features secure storage, biometric login, chat interface, Redux for state management, and various third-party libraries for enhanced development experience.
 
+NOTE: PIN code for initial screen 12345
 ---
 
 ## 🚀 Getting Started
