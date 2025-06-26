@@ -99,6 +99,10 @@ yarn android
 * `react-native-safe-area-context`, `react-native-screens` – Safe UI areas
 * `react-native-keyboard-controller` – Keyboard behavior control
 
+### ✍️ Fonts Support
+
+- This app supports **Roboto** and **Quicksand** fonts.
+- Custom fonts are properly linked and used across the UI for improved typography and aesthetics.
 ---
 
 ## 🛡️ Dev Tools
